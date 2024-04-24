@@ -42,8 +42,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="binanceApiKey">Binance API Key</label>
-                                <input type="text" class="form-control" id="binanceApiKey" name="binanceApiKey"
+                                <label for="binanceApiKey">Email</label>
+                                <input type="text" class="form-control" id="email" name="email"
                                     required>
                             </div>
                             <button type="submit" class="btn btn-primary">Sign Up</button>
@@ -75,12 +75,12 @@
 
             const username = document.getElementById('Username').value;
             const password = document.getElementById('Password').value;
-            const binanceApiKey = document.getElementById('binanceApiKey').value;
+            const email = document.getElementById('email').value;
 
             const userData = {
                 username,
                 password,
-                binanceApiKey
+                email
             };
 
             fetch('http://localhost:3000/signup', {

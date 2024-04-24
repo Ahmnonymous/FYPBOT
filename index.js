@@ -23,7 +23,7 @@ app.use(express.static(__dirname));
 const userSchema = new mongoose.Schema({
     userName: String,
     Password: String,
-    BinanceKey: String,
+    email: String,
 });
 
 const User = mongoose.model('User', userSchema);
@@ -33,15 +33,15 @@ app.post('/signup', async (req, res) => {
     try {
         const userName = req.body.username;
         const plainPassword = req.body.password;
-        const Binancekey = req.body.binanceApiKey;
+        const email = req.body.email;
 
         const existingUser = await User.findOne({ userName });
-        const existingUserByBinanceKey = await User.findOne({ BinanceKey: Binancekey });
+        const existingemail = await User.findOne({ email: email });
 
         if (existingUser) {
             return res.status(400).json({ message: 'User with the same userName already exists' });
-        } else if (existingUserByBinanceKey) {
-            return res.status(400).json({ message: 'Binance API key already exists' });
+        } else if (existingemail) {
+            return res.status(400).json({ message: 'Email already exists' });
         } else {
 
             const saltRounds = 10;
@@ -51,7 +51,7 @@ app.post('/signup', async (req, res) => {
             const user = new User({
                 userName: userName,
                 Password: hashedPassword,
-                BinanceKey: Binancekey
+                email: email
             });
 
             await user.save();
