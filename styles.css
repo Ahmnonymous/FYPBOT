@@ -64,45 +64,13 @@ label {
 .navbar .navbar-nav .nav-link:hover {
     color: #fff; /* Set the color of the links on hover */
 }
-
-/* Custom CSS for Market News */
-#marketNewsSlider {
+.carousel-item img {
+    border-radius: 20px;
+    filter: brightness(90%) blur(2px); /* Add backdrop filter with brightness and blur effects */
     width: 100%;
+    height: 550px; 
+    object-fit: cover; /* Ensure the entire image is visible within the specified dimensions */
 }
 
-#newsItems {
-    display: flex;
-    flex-wrap: wrap;
-}
 
-.carousel-item {
-    width: 100%;
-}
 
-.news-item {
-    display: flex;
-    align-items: center;
-    background-color: #2a2a2a;
-    padding: 10px;
-    margin: 10px 0;
-}
-
-.news-item img {
-    background-position: fixed;
-    background-size: cover;
-    width: 100px; /* Adjust image width as needed */
-    height: 50px;
-    margin-right: 20px;
-}
-
-.news-item-content {
-    color: #fff;
-}
-
-.news-item-content h5 {
-    margin-bottom: 5px;
-}
-
-.news-item-content p {
-    margin-bottom: 0;
-}
