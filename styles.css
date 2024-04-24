@@ -47,3 +47,62 @@ label {
     color: #f0b90b;
 }
 
+.input-group-append span{
+    background-color: #f0b90b;
+    border-color: #f0b90b;
+}
+
+.navbar {
+    background-color: #f0b90b !important;
+    border-color: #f0b90b !important;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #000; /* Set the color of the links */
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #fff; /* Set the color of the links on hover */
+}
+
+/* Custom CSS for Market News */
+#marketNewsSlider {
+    width: 100%;
+}
+
+#newsItems {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.carousel-item {
+    width: 100%;
+}
+
+.news-item {
+    display: flex;
+    align-items: center;
+    background-color: #2a2a2a;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.news-item img {
+    background-position: fixed;
+    background-size: cover;
+    width: 100px; /* Adjust image width as needed */
+    height: 50px;
+    margin-right: 20px;
+}
+
+.news-item-content {
+    color: #fff;
+}
+
+.news-item-content h5 {
+    margin-bottom: 5px;
+}
+
+.news-item-content p {
+    margin-bottom: 0;
+}
