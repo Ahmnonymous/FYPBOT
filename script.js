@@ -42,13 +42,11 @@ async function createBinanceCards() {
     const binanceData = await fetchDataFromBinance();
 
     const binanceCardsContainer = document.getElementById('binanceCards');
-    let coinCount = 0; // Track the number of coins added
-
+    let coinCount = 0;
     binanceData.forEach(coin => {
         if (coinCount < 9) { // Check if the limit has been reached
             const cardDiv = document.createElement('div');
-            cardDiv.classList.add('col-md-4', 'mb-4');
-
+            cardDiv.classList.add('mb-4', 'card');
             const cardBody = document.createElement('div');
             cardBody.classList.add('card-body');
 
@@ -56,55 +54,37 @@ async function createBinanceCards() {
             title.classList.add('card-title');
             title.textContent = coin.symbol;
 
-            const highestPrice = document.createElement('p');
-            highestPrice.classList.add('card-text');
-            highestPrice.textContent = `Highest Price: $${coin.highPrice}`;
-
             const currentPrice = document.createElement('p');
-            currentPrice.classList.add('card-text');
-            currentPrice.textContent = `Current Price: $${coin.lastPrice}`;
+            currentPrice.classList.add('card-text',);
+            currentPrice.innerHTML = `Current Price: <span class="green-text">$${coin.lastPrice}</span>`;
 
-            const lowestPrice = document.createElement('p');
-            lowestPrice.classList.add('card-text');
-            lowestPrice.textContent = `Lowest Price: $${coin.lowPrice}`;
-
-            const coinVolume = document.createElement('p');
-            coinVolume.classList.add('card-text');
-            coinVolume.textContent = `Coin Volume: ${coin.volume}`;
-
-            const amount = document.createElement('p');
-            amount.classList.add('card-text');
-            amount.textContent = `Amount: ${coin.volume}`;
-
-            const percent = document.createElement('p');
-            percent.classList.add('card-text');
-            percent.textContent = `Percent: ${coin.priceChangePercent}%`;
+            const marketCap = document.createElement('p');
+            marketCap.classList.add('card-text');
+            marketCap.innerHTML = `Market Cap: <span class="green-text">$${coin.volume}</span>`;
 
             const buttonContainer = document.createElement('div');
             buttonContainer.classList.add('button-container');
 
             // Create Buy button
-            const buyButton = document.createElement('button');
-            buyButton.classList.add('btn', 'btn-success', 'col-md-6','m-1');
-            buyButton.textContent = 'Chart';
+            const chartButton = document.createElement('button');
+            chartButton.classList.add('btn', 'btn-primary', 'col-md-6', 'm-1');
+            chartButton.textContent = 'Coin Predict';
 
+            chartButton.addEventListener('click', function () {
+                // Navigate to chart.html with the coin symbol as a query parameter
+                window.location.href = `index.html?coin=${coin.symbol}`;
+            });
 
             // Append buttons to button container
-            buttonContainer.appendChild(buyButton);
-            buttonContainer.appendChild(sellButton);
+            buttonContainer.appendChild(chartButton);
 
             cardBody.appendChild(title);
-            cardBody.appendChild(highestPrice);
             cardBody.appendChild(currentPrice);
-            cardBody.appendChild(lowestPrice);
-            cardBody.appendChild(coinVolume);
-            cardBody.appendChild(amount);
-            cardBody.appendChild(percent);
+            cardBody.appendChild(marketCap);
             cardBody.appendChild(buttonContainer);
 
             cardDiv.appendChild(cardBody);
             binanceCardsContainer.appendChild(cardDiv);
-
             coinCount++; // Increment the coin count
         }
     });

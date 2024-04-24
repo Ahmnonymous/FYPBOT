@@ -48,7 +48,7 @@ label {
     color: #f0b90b;
 }
 
-.input-group-append span{
+.input-group-append span {
     background-color: #f0b90b;
     border-color: #f0b90b;
 }
@@ -56,21 +56,37 @@ label {
 .navbar {
     background-color: #f0b90b !important;
     border-color: #f0b90b !important;
+    padding: 12px;
 }
 
 .navbar .navbar-nav .nav-link {
-    color: #000; /* Set the color of the links */
+    color: #000;
+    /* Set the color of the links */
 }
 
 .navbar .navbar-nav .nav-link:hover {
-    color: #fff; /* Set the color of the links on hover */
+    color: #fff;
+    /* Set the color of the links on hover */
 }
+
 .carousel-item img {
     border-radius: 20px;
     width: 100%;
-    height: 350px; 
-    object-fit: cover; /* Ensure the entire image is visible within the specified dimensions */
+    height: 350px;
+    object-fit: cover;
+    /* Ensure the entire image is visible within the specified dimensions */
 }
 
+.card {
+    /* Add border */
+    width: 360px !important;
+    margin: 5px;
+    border: 1px solid white;
+    box-shadow: 10px 10px 8px rgba(44, 44, 44, 0.6);
+    /* Add box shadow */
+}
 
-
+.green-text {
+    color: green;
+    /* Define green color */
+}
