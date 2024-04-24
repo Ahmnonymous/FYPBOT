@@ -36,28 +36,34 @@ app.post('/signup', async (req, res) => {
         const Binancekey = req.body.binanceApiKey;
 
         const existingUser = await User.findOne({ userName });
+        const existingUserByBinanceKey = await User.findOne({ BinanceKey: Binancekey });
 
         if (existingUser) {
             return res.status(400).json({ message: 'User with the same userName already exists' });
+        } else if (existingUserByBinanceKey) {
+            return res.status(400).json({ message: 'Binance API key already exists' });
+        } else {
+
+            const saltRounds = 10;
+            const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
+
+            // Create a new user with the hashed password
+            const user = new User({
+                userName: userName,
+                Password: hashedPassword,
+                BinanceKey: Binancekey
+            });
+
+            await user.save();
+            return res.status(200).json({ message: 'Sign Up successful' });
         }
-
-        const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
-
-        // Create a new user with the hashed password
-        const user = new User({
-            userName: userName,
-            Password: hashedPassword,
-            BinanceKey: Binancekey
-        });
-
-        await user.save();
-        return res.status(200).json({ message: 'Sign Up successful' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'An error occurred while registering the user' });
     }
 });
+
+
 // Login Api
 app.post('/login', async (req, res) => {
     try {

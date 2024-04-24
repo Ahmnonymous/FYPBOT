@@ -70,7 +70,6 @@
                 icon.classList.add("fa-eye-slash");
             }
         }
-
         $("#signupForm").submit(function (event) {
             event.preventDefault(); // Prevent default form submission
 
@@ -96,14 +95,15 @@
                         window.location.href = '/login.html';
                     } else {
                         return response.json().then(data => {
-                            console.error(data.message);
-                            alert('The User Name is Already Exist');
+                            alert(data.message);
                         });
                     }
                 }).catch(error => {
                     console.error(error);
+                    alert('An error occurred while signing up');
                 });
         });
+
     </script>
 </body>
 
