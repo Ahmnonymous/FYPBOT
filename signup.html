@@ -92,7 +92,7 @@
             })
                 .then(response => {
                     if (response.ok) {
-                        window.location.href = '/login.html';
+                        window.location.href = '/FYPBOT/login.html';
                     } else {
                         return response.json().then(data => {
                             alert(data.message);

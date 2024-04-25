@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
+<style>
+    .navbar .dropdown .dropdown-menu{
+        position: absolute;
+        left: -65px;
+        width: 120px;
+
+    }
+</style>
 <body>
 
     <!-- Navbar -->
@@ -40,9 +48,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Setting&nbsp;<i class="fas fa-cog"></i></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">User&nbsp;<i class="fas fa-user"></i></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            User&nbsp;<i class="fas fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="./changePassword.html">Change Password</a>
+                            <a class="dropdown-item" href="#">Sign Out</a>
+                        </div>
                     </li>
+                    
                 </ul>
             </div>
         </nav>

@@ -77,13 +77,13 @@ label {
     /* Ensure the entire image is visible within the specified dimensions */
 }
 
-.card {
+.coincard {
     /* Add border */
     width: 360px !important;
     margin: 5px;
     border: 1px solid white;
     box-shadow: 10px 10px 8px rgba(44, 44, 44, 0.6);
-    /* Add box shadow */
+    border-radius: 20px;
 }
 
 .green-text {

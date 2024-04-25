@@ -39,7 +39,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="submit" id="login" class="btn btn-primary">Login</button>
+                            <a href="./signup.html"><span class="text-white mt-3 text-left">Don't have an account?
+                                    Create one</span></a>
                         </form>
                     </div>
                 </div>
@@ -64,7 +66,9 @@
             }
         }
 
-        document.getElementById('login').addEventListener('click', () => {
+        document.getElementById('login').addEventListener('click', (event) => { // Use 'click' event on login button
+            event.preventDefault(); // Prevent form submission
+
             const username = document.getElementById('Username').value;
             const password = document.getElementById('Password').value;
 
@@ -82,16 +86,18 @@
             })
                 .then(response => {
                     if (response.ok) {
-                        window.location.href = '/home.html';
+                        return response.json(); // Parse response JSON
                     } else {
-                        alert('Invalid Email Or Password')
-                        return response.json().then(data => {
-                            console.error(data.message);
-                        });
+                        alert('Invalid Email Or Password');
+                        throw new Error('Invalid Email Or Password');
                     }
                 })
+                .then(data => {
+                    localStorage.setItem('token', data.token); // Save token in localStorage
+                    window.location.href = '/FYPBOT/home.html';
+                })
                 .catch(error => {
-                    console.error('An error occurred:', error); // Log any fetch errors
+                    console.error('An error occurred:', error);
                 });
         });
     </script>

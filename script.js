@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     fetchNews();
 });
-
 function fetchNews() {
     const apiKey = 'a2138d7d4ed34d8698b3b607415d3bc5';
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${apiKey}`;
+    const url = `https://newsapi.org/v2/everything?q=(crypto OR binance OR bitcoin)&apiKey=${apiKey}`;
 
     fetch(url)
         .then(response => response.json())
@@ -31,6 +30,7 @@ function fetchNews() {
 }
 
 
+
 async function fetchDataFromBinance() {
     const response = await fetch('https://api.binance.com/api/v3/ticker/24hr');
     const data = await response.json();
@@ -46,7 +46,7 @@ async function createBinanceCards() {
     binanceData.forEach(coin => {
         if (coinCount < 9) { // Check if the limit has been reached
             const cardDiv = document.createElement('div');
-            cardDiv.classList.add('mb-4', 'card');
+            cardDiv.classList.add('mb-4', 'coincard');
             const cardBody = document.createElement('div');
             cardBody.classList.add('card-body');
 
@@ -72,7 +72,7 @@ async function createBinanceCards() {
 
             chartButton.addEventListener('click', function () {
                 // Navigate to chart.html with the coin symbol as a query parameter
-                window.location.href = `index.html?coin=${coin.symbol}`;
+                window.location.href = `index.html`;
             });
 
             // Append buttons to button container
