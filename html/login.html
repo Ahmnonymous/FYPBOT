@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+    <div class="container logincontainer">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Binance Trading Bot - Login</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="#" method="post" id="loginForm">
+                            <div class="form-group">
+                                <label for="loginUsername">Username</label>
+                                <input type="text" class="form-control" id="Username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Password</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="Password" name="password" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text toggle-password"
+                                            onclick="togglePasswordVisibility()">
+                                            <i id="eyeIcon" class="fas fa-eye-slash"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" id="login" class="btn btn-primary">Login</button>
+                            <a href="/signup.html"><span class="text-white mt-3 text-left">Don't have an account?
+                                    Create one</span></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        function togglePasswordVisibility() {
+            var input = document.getElementById("Password");
+            var icon = document.getElementById("eyeIcon");
+
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            }
+        }
+
+        document.getElementById('login').addEventListener('click', (event) => { // Use 'click' event on login button
+            event.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById('Username').value;
+            const password = document.getElementById('Password').value;
+
+            const userData = {
+                username,
+                password
+            };
+
+            fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json(); // Parse response JSON
+                    } else {
+                        alert('Invalid Email Or Password');
+                        throw new Error('Invalid Email Or Password');
+                    }
+                })
+                .then(data => {
+                    localStorage.setItem('token', data.token); // Save token in localStorage
+                    window.location.href = '/FYPBOT/home.html';
+                })
+                .catch(error => {
+                    console.error('An error occurred:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>

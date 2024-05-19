@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <title>ZRX Price Analysis</title>
+    <style>
+      body {
+          
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #2a2a2a;
+            color: white;
+
+      }
+
+        .container {
+            
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .graph {
+            flex: 1 1 300px;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            background-color: #2a2a2a;
+            background: linear-gradient(#2a2a2a, #d2cd5e);
+            }
+        img {
+                
+            max-width: 100%;
+            height: auto;
+            }
+
+        .prediction {
+            margin-top: 20px;
+            text-align: center;
+            }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;" class="mt-3">ZRX Price Analysis</h1>
+      <div class="px-4 mt-4">
+            <h2>Predictions</h2>
+        <p>The predicted price for tomorrow is 0.61 USD.</p>
+        <p>The predicted price for next month is 0.35 USD.</p>
+        </div>
+    <div class="container">
+        <div class="graph">
+            <h2>ZRX Price by Day</h2>
+            <img src="zrx_price_day.png" alt="ZRX Price by Day">
+        </div>
+        <div class="graph">
+            <h2>ZRX Price by Month</h2>
+            <img src="zrx_price_month.png" alt="ZRX Price by Month">
+        </div>
+        <div class="graph">
+            <h2>ZRX Price by Quarter</h2>
+            <img src="zrx_price_quarter.png" alt="ZRX Price by Quarter">
+        </div>
+        <div class="graph">
+            <h2>ZRX Price by Year</h2>
+            <img src="zrx_price_year.png" alt="ZRX Price by Year">
+        </div>
+    </div>
+    <div class="prediction">
+        <h2>Day-Based Predicted Prices</h2>
+        <img src="predicted_price_day.png" alt="Day-Based Predicted Prices">
+        <h2>Month-Based Predicted Prices</h2>
+        <img src="predicted_price_month.png" alt="Month-Based Predicted Prices">
+        <h2>Overall Predicted Prices</h2>
+        <img src="overall_predicted_price.png" alt="Overall Predicted Prices">
+        <h2>Model Evaluation</h2>
+        <p>R-squared score for month: -0.12537260472994638</p>
+    </div>
+</body>
+</html>
